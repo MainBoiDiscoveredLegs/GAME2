@@ -79,41 +79,41 @@ var explosion;
 
 function preload() {
     //audio
-    click = loadSound('AUDIO/click.mp3');
-    drop = loadSound('AUDIO/drop.mp3');
-    inBox = loadSound('AUDIO/inBox.mp3');
-    money = loadSound('AUDIO/money.mp3');
-    winmsc = loadSound('AUDIO/WIN.mp3');
-    pickUp = loadSound("AUDIO/footStep.mp3");
-    explosion = loadSound("AUDIO/explostion.mp3");
+    click = loadSound('click.mp3');
+    drop = loadSound('drop.mp3');
+    inBox = loadSound('inBox.mp3');
+    money = loadSound('money.mp3');
+    winmsc = loadSound('WIN.mp3');
+    pickUp = loadSound("footStep.mp3");
+    explosion = loadSound("explostion.mp3");
 
     //starting screen
-    monBdyIMG = loadImage("IMG/monkey_fullbody.png");
+    monBdyIMG = loadImage("monkey_fullbody.png");
 
     //levels screen
-    earthIMG = loadImage("IMG/earth.png");
-    marsIMG = loadImage("IMG/mars.png");
-    rocketIMG = loadImage("IMG/rocket.png");
+    earthIMG = loadImage("earth.png");
+    marsIMG = loadImage("mars.png");
+    rocketIMG = loadImage("rocket.png");
 
     //level 1
-    capIMGL = loadImage("IMG/hatL.png");
-    capIMGR = loadImage("IMG/hatR.png");
+    capIMGL = loadImage("hatL.png");
+    capIMGR = loadImage("hatR.png");
 
-    monkeyIMGL = loadImage("IMG/monkyHeadL.png");
-    monkeyIMGR = loadImage("IMG/monkyHeadR.png");
+    monkeyIMGL = loadImage("monkyHeadL.png");
+    monkeyIMGR = loadImage("monkyHeadR.png");
 
-    sellerIMGL = loadImage("IMG/sellerL.png");
-    sellerIMGR = loadImage("IMG/sellerR.png");
+    sellerIMGL = loadImage("sellerL.png");
+    sellerIMGR = loadImage("sellerR.png");
 
-    boxIMG = loadImage("IMG/box.png");
+    boxIMG = loadImage("box.png");
 
     //shop
-    gunIMG = loadImage("IMG/shooter.png")
-    rktimg = loadImage("IMG/showrkt.png")
+    gunIMG = loadImage("shooter.png")
+    rktimg = loadImage("showrkt.png")
 
     //level 2
-    astroidIMG = loadImage("IMG/asteroid.png");
-    bulletIMG = loadImage("IMG/bullet.png");
+    astroidIMG = loadImage("asteroid.png");
+    bulletIMG = loadImage("bullet.png");
 
 }
 
