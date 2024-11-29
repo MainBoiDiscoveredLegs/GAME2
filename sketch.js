@@ -779,6 +779,7 @@ function draw() {
     } else {
 
         wall1.visible = false;
+        resetButton.hide();
         wall2.visible = false;
         wall3.visible = false;
         wall4.visible = false;
