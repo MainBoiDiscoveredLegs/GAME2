@@ -262,7 +262,7 @@ function setup() {
     wall1.shapeColor = "black";
     wall1.visible = false;
 
-    wall2 = createSprite(0, 510, 7000);
+    wall2 = createSprite(0, 510, 70000);
     wall2.shapeColor = "black";
     wall2.visible = false;
 
