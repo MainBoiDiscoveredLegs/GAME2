@@ -1,0 +1,275 @@
+var gameState = "LVL1";
+var levelNo = '1';
+var shooter = '0';
+var rocketNo = '0';
+
+//Starting Screen
+var monBdyIMG;
+var monBdy;
+
+var shopButton;
+var levelsButton;
+var howToPlayButton;
+var backButton;
+
+//audio
+var bgmsc;
+var click;
+var drop;
+var inBox;
+var money;
+var winmsc;
+
+//levels screen
+var earthIMG;
+var earth;
+
+var marsIMG;
+var mars;
+var rocketIMG;
+var rocket;
+
+var lvl1;
+var lvl2;
+var lvl3;
+
+
+function preload() {
+    //audio
+    click = loadSound('AUDIO/click.mp3');
+    drop = loadSound('AUDIO/drop.mp3');
+    inBox = loadSound('AUDIO/inBox.mp3');
+    money = loadSound('AUDIO/money.mp3');
+    winmsc = loadSound('AUDIO/WIN.mp3');
+
+    //starting screen
+    monBdyIMG = loadImage("IMG/monkey_fullbody.png");
+
+    //levels screen
+    earthIMG = loadImage("IMG/earth.png");
+    marsIMG = loadImage("IMG/mars.png");
+    rocketIMG = loadImage("IMG/rocket.png");
+
+}
+
+function setup() {
+    canvas = createCanvas(1000, 500);
+    background("#000000");
+    fill("#fcfbfb");
+    quad(1, 1, 999, 1, 999, 499, 1, 499);
+
+    backButton = createButton("BACK");
+    backButton.position(910,581);
+    backButton.hide();
+
+    resetButton = createButton('RESTART LEVEL');
+    resetButton.position(750,581);
+    resetButton.hide();
+
+    //starting screen
+    monBdy = createSprite(250,250,50,50);
+    monBdy.addImage("bdyIMG", monBdyIMG);
+    monBdy.visible = false;
+
+
+    shopButton = createButton("SHOP");
+    shopButton.position(650, 250);
+    shopButton.hide();
+    levelsButton = createButton("LEVELS");
+    levelsButton.position(650, 340);
+    levelsButton.hide();
+    howToPlayButton = createButton("HOW TO PLAY?");
+    howToPlayButton.position(650, 430);
+    howToPlayButton.hide();
+
+    //levels screen
+    earth = createSprite(210,250, 50, 50);
+    earth.addImage("earth", earthIMG);
+    earth.scale = 0.8;
+    earth.visible = false;
+
+    mars = createSprite(790,250, 50, 50);
+    mars.addImage("mars", marsIMG);
+    mars.scale = 0.8;
+    mars.visible = false;
+
+    lvl1 = createButton('LVL 1');
+    lvl1.position(190, 430);
+    lvl1.hide();
+
+    lvl2 = createButton('LVL 2');
+    lvl2.position(480, 370);
+    lvl2.hide();
+
+    lvl3 = createButton('LVL 3');
+    lvl3.position(770, 430);
+    lvl3.hide();
+
+    rocket = createSprite(490,250);
+    rocket.addImage('rocket', rocketIMG);
+    rocket.scale = 0.6;
+    rocket.visible = false;
+    
+    
+}
+
+function draw() {
+    
+    drawSprites();
+
+    if (gameState === 'StartingScreen') {
+        fill("#fcfbfb");
+        quad(1, 1, 999, 1, 999, 499, 1, 499);
+        drawSprites();
+        monBdy.visible = true;
+        earth.visible = false;
+        mars.visible = false;
+        rocket.visible = false;
+        backButton.hide();
+        shopButton.show();
+        howToPlayButton.show();
+        levelsButton.show();
+        lvl1.hide();
+        lvl2.hide();
+        lvl3.hide();
+
+        textSize(50);
+        fill("black");
+        textFont('monospace')
+        text("SPACE EXPEDITION", 450, 120);
+        textSize(15);
+        text("One small step for man, a giant leap for mankind", 470, 150);
+
+        shopButton.mousePressed(function () {
+            click.play();
+            if (levelNo === '2') {
+                gameState = "SHOP";
+            } else {
+                alert("Earn Caps and complete LV 1 first to unlock the SHOP!");
+            }
+        });
+
+        levelsButton.mousePressed(function () {
+            click.play();
+            gameState = "LEVELS";
+
+        });
+
+        howToPlayButton.mousePressed(function () {
+            click.play();
+            gameState = "H2P?";
+
+        });
+
+    } else if (gameState === 'H2P?') {
+        fill("#fcfbfb");
+        quad(1, 1, 999, 1, 999, 499, 1, 499);
+        drawSprites();
+        shopButton.hide();
+        levelsButton.hide();
+        howToPlayButton.hide();
+        monBdy.visible = true;
+        backButton.show();
+
+        textSize(50);
+        fill("black");
+        textFont('monospace')
+        text("HOW TO PLAY?", 490, 85);
+
+        textSize(15);
+        text("> You are the Cap Seller who wants to become an \n  astronaut! \n\n"
+            + "> These pesky monkeys have stolen your caps, so\n  you have to get them back. \n\n"
+            + "> It just so happens that the monkeys will follow \n  everything you do! \n\n"
+            + "> Use the 'up, down, left, right' arrows to move. \n  Once you collect the hat, hold 'space bar' to drop \n  he hat in the box. \n\n"
+            + "> Make the monkeys pick up the caps and drop them \n  off in their respective boxes. \n\n"
+            + "> Earn money by selling your caps in the SHOP and \n  buy a shooter and rocket ship to advance to space!", 490, 130);
+
+        backButton.mousePressed(function () {
+            click.play();
+            gameState = "StartingScreen";
+        });
+ 
+    } else if (gameState == 'SHOP'){
+
+    } else if (gameState == 'LEVELS'){
+        fill("#fcfbfb");
+        quad(1, 1, 999, 1, 999, 499, 1, 499);
+        drawSprites();
+        shopButton.hide();
+        levelsButton.hide();
+        howToPlayButton.hide();
+        monBdy.visible = false;
+        backButton.show();
+
+        earth.visible = true;
+        mars.visible = true;
+
+        strokeWeight(0);
+        textSize(60);
+        fill("black");
+        textFont('monospace')
+        text("L E V E L S", 320, 100);
+
+        if (levelNo === '1') {
+            lvl1.show();
+            textSize(15)
+            text("A group of Monkeys are caled a 'troop', \n'tribe' or a 'mission'.", 350, 430);
+            lvl1.mousePressed(function () {
+                click.play();
+                gameState = 'LVL1';
+            });
+        }
+        if (levelNo === '2') {
+            textSize(15)
+            text("Some monkeys have a 'prehensile tail' which \nis like a second hand.", 320, 430);
+            textSize(40);
+            text("✔", 200,430);
+        }
+        if (levelNo === '3') {
+            lvl3.show();
+            textSize(40);
+            text("✔", 200,430);
+            text("✔", 490,340);
+            textSize(15);
+            text("Monkeys have large brains when \ncomparred to their body \nproportions; \nthis is why they're so intellegent.", 350, 400);
+            lvl3.mousePressed(function () {
+                click.play();
+                gameState = 'LVL3';
+            });
+        }
+
+        if (shooter === '1' && rocketNo === '1') {
+            fill("black");
+            stroke("black");
+            strokeWeight(5);
+            for (var i = 335; i < 400; i = i + 20) {
+                line(i, 240, i + 10, 240);
+            }
+            if (levelNo === '3'){
+                for (var i = 600; i < 670; i = i + 20) {
+                    line(i, 240, i + 10, 240);
+                }
+            }
+            rocket.visible = true;
+            lvl2.show();
+            lvl2.mousePressed(function () {
+                click.play();
+                gameState = 'LVL2';
+            });
+        }
+
+
+
+        backButton.mousePressed(function () {
+            click.play();
+            gameState = "StartingScreen";
+        });
+
+    } else if (gameState == "LVL1"){
+
+    }else if (gameState == "LVL2"){
+        
+    }else if (gameState == "LVL3"){
+        
+    }
+}
