@@ -900,7 +900,7 @@ function draw() {
 function astroid() {
     var obstacle = createSprite(1100, Math.round(random(50, 370)), 10, 10);
     obstacle.addImage(astroidIMG);
-    obstacle.velocityX = -Math.round(random(10,30))
+    obstacle.velocityX = -Math.round(random(20,50))
     obstacle.lifetime = 250;
     obstacle.scale = random(0.1,0.6);
 
