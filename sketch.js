@@ -836,12 +836,12 @@ function draw() {
                 buletsGroup.destroyEach();
                 state = "finish";
                 if (winmscTF==="F2"){
-                    winmsc = "T2";
+                    winmscTF = "T2";
                 }
             }
         }
 
-        if (winmsc==="T2"){
+        if (winmscTF==="T2"){
             winmsc.play();
             winmscTF = "F3";
         }
