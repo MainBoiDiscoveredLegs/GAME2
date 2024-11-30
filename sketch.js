@@ -599,6 +599,10 @@ function draw() {
         capSeller.collide(door);
         monkey1.collide(door);
         door.collide(wall2);
+
+        cap1.collide(wall2);
+        cap2.collide(wall2);
+        cap3.collide(wall2);
         
         capSeller.collide(lever2);
         monkey1.collide(lever2);
